@@ -25,7 +25,7 @@
 
 
 function bodyScrollingToggle(){
-	document.body.classList.toggle("stop-scrolling");
+	document.body.classList.toggle("hidden-scrolling");
 }
 
 
@@ -137,7 +137,7 @@ function bodyScrollingToggle(){
 				slideIndex++;
 			}
 			popupSlideshow();
-			console.log("slideIndex:" + slideIndex);
+			// console.log("slideIndex:" + slideIndex);
 		})
 
 		// prev slide
@@ -160,12 +160,17 @@ function bodyScrollingToggle(){
 			projectDetailsBtn.style.display = "block";
 			// get the project details
 			const details =portfolioItems[itemIndex].querySelector(".portfolio-item-details").innerHTML;
+			// set the project details
 			popup.querySelector(".pp-project-details").innerHTML = details;
+			// get the project title
 			const title = portfolioItems[itemIndex].querySelector(".portfolio-item-title").innerHTML;
 			// console.log(title);
+			// set the project title
 			popup.querySelector(".pp-title h2").innerHTML =title;
+			// get the project category
 			const category = portfolioItems[itemIndex].getAttribute("data-category");
 			// console.log(category);
+			// set the project category
 			popup.querySelector(".pp-project-category").innerHTML = category.split("-").join(" ");
 		}
 
@@ -190,5 +195,64 @@ function bodyScrollingToggle(){
 				popup.scrollTo(0, projectDetailsContainer.offsetTop);
 			}
 		}
+})();
+
+
+/* ----------------------- Testimonial slider ----------------------- */
+
+// immediatley invoked expression -using arrow function
+(() => {
+
+	const sliderContainer = document.querySelector(".testi-slider-container"),
+		slides = sliderContainer.querySelectorAll(".testi-item"),
+		// console.log(slides);
+		slideWidth = sliderContainer.offsetWidth,
+		// console.log(slideWidth);
+		prevBtn =document.querySelector(".testi-slider-nav .prev"),
+		nextBtn =document.querySelector(".testi-slider-nav .next"),
+		activeSlide = sliderContainer.querySelector(".testi-item.active");
+		let slideIndex = Array.from(activeSlide.parentElement.children).indexOf(activeSlide);
+		// console.log(slideIndex);
+
+		// set width of all slides
+		slides.forEach((slide) => {
+			// console.log(slide);
+			slide.style.width = slideWidth + "px";
+		})
+
+		// set width of sliderController
+		sliderContainer.style.width = slideWidth * slides.length + "px";
+
+		nextBtn.addEventListener("click", () => {
+			if(slideIndex === slides.length - 1){
+				slideIndex = 0;
+			}
+			else{
+				slideIndex++;
+			}
+			// console.log(slideIndex);
+			slider();
+		})
+
+		prevBtn.addEventListener("click", () => {
+			if(slideIndex === 0){
+				slideIndex = slides.length - 1;
+			}
+			else{
+				slideIndex--;
+			}
+			// console.log(slideIndex);
+			slider();
+		})
+
+		function slider(){
+			// deactivate existing active slide
+			sliderContainer.querySelector(".testi-item.active").classList.remove("active");
+			// activate new slide
+			slides[slideIndex].classList.add("active");
+			sliderContainer.style.marginLeft = - (slideWidth * slideIndex) + "px";
+		}
+
+		slider();
 
 })();
