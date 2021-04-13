@@ -719,7 +719,7 @@ About Section
 }
 .about-section .timeline .timeline-item:nth-child(odd){
 	padding-right: calc(50% + 50px);
-	text-align: right;
+	/*text-align: right;*/
 }
 .about-section .timeline .timeline-item:nth-child(even){
 	padding-left: calc(50% + 50px);
