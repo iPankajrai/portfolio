@@ -270,6 +270,8 @@ img{
 }
 
 
+
+
 /* ------------
 Preloader
 ---------------*/
@@ -693,6 +695,26 @@ About Section
 	color: var(--text-black-600);
 	margin-top: -40px;
 }
+
+.skills span{
+	display: block;
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--skin-color);
+	margin: 0 0 5px;
+	text-transform: capitalize;
+	/*text-align: center;*/
+}
+
+.skills .skills-categ{
+	border-radius: 5px;
+	margin-bottom: 30px;
+	padding: 10px;
+
+}
+
+
+
 .about-section .education,
 .about-section .experience{
 	padding-bottom: 80px;
@@ -788,6 +810,17 @@ About Section
 	color: var(--text-black-600);
 	line-height: 26px;
 	margin: 15px 0 0;
+}
+
+.about-section .timeline .timeline-item-inner .project-list{
+	margin: 10px;
+	border-radius: 5px;
+	/*padding: 5px;*/
+}
+.about-section .timeline .timeline-item-inner .project-list a{
+	/*margin: 10px;*/
+	padding: 5px;
+	border-radius: 5px;
 }
 
 /*----------------
